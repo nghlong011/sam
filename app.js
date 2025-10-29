@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var nowInit = Date.now();
         var parsed = savedTs ? parseInt(savedTs, 10) : NaN;
         var deadline = (!isNaN(parsed) && parsed > nowInit) ? parsed : (nowInit + 7 * 60 * 60 * 1000);
-        try { localStorage.setItem(STORAGE_KEY, String(deadline)); } catch (e) {}
+        try { localStorage.setItem(STORAGE_KEY, String(deadline)); } catch (e) { }
 
         function pad(n) { return n < 10 ? '0' + n : String(n); }
 
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (delta <= 0) {
                 clearInterval(timer);
-                try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+                try { localStorage.removeItem(STORAGE_KEY); } catch (e) { }
             }
         }, 1000);
     }
@@ -143,3 +143,135 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+// Xoay nội dung #NOTIFY3 mỗi 15 giây và ẩn mặc định khi vào trang
+document.addEventListener('DOMContentLoaded', function () {
+    var notifyRoot = document.getElementById('NOTIFY3');
+    if (!notifyRoot) return;
+
+    var notifyBox = notifyRoot.querySelector('.ladi-notify');
+    if (notifyBox) {
+        // Ẩn mặc định khi vào trang
+        notifyBox.style.opacity = '0';
+        notifyBox.style.top = '-162px';
+        // Thêm transition mượt nếu chưa có
+        if (!notifyBox.style.transition) {
+            notifyBox.style.transition = 'opacity .4s ease, top .4s ease';
+        }
+    }
+
+    // Danh sách nội dung notify
+    var notifications = [
+        { image: './images/sale.jpeg', title: 'Nguyễn Thị Thu Vân - 090487**12', content: 'Đã mua 2 hộp', time: '1 phút trước' },
+        { image: './images/sale1.jpg', title: 'Trần Văn Quốc - 086166**67', content: 'Đã mua 3 tặng 1', time: '3 phút trước' },
+        { image: './images/sale2.jpg', title: 'Lê Thị Kim Anh - 090487**12', content: 'Đã mua 1 hộp', time: '5 phút trước' },
+        { image: './images/sale3.jpeg', title: 'Nguyễn Thị Thúy - 038687**54', content: 'Đã mua 1 hộp', time: '7 phút trước' },
+        { image: './images/sale4.jpg', title: 'Vũ Thị Thư - 098647**32', content: 'Đã mua 2 hộp', time: '10 phút trước' },
+        { image: './images/sale5.jpg', title: 'Hoàng Thị Thu Hà - 084354**79', content: 'Đã mua 3 tặng 1', time: '12 phút trước' },
+        { image: './images/sale6.jpg', title: 'Phùng Khánh Linh - 096345**21', content: 'Đã mua 2 hộp', time: '14 phút trước' },
+
+        { image: './images/sale.jpeg', title: 'Nguyễn Văn Dũng - 091234**88', content: 'Đã mua 2 hộp', time: '16 phút trước' },
+        { image: './images/sale1.jpg', title: 'Phạm Thị Hồng - 097865**43', content: 'Đã mua 1 hộp', time: '18 phút trước' },
+        { image: './images/sale2.jpg', title: 'Lê Văn Quân - 083456**92', content: 'Đã mua 3 tặng 1', time: '21 phút trước' },
+        { image: './images/sale3.jpeg', title: 'Đỗ Thị Huyền - 090456**75', content: 'Đã mua 2 hộp', time: '23 phút trước' },
+        { image: './images/sale4.jpg', title: 'Trần Thị Mai - 098732**58', content: 'Đã mua 1 hộp', time: '25 phút trước' },
+        { image: './images/sale5.jpg', title: 'Ngô Thị Thanh - 086912**44', content: 'Đã mua 2 hộp', time: '27 phút trước' },
+        { image: './images/sale6.jpg', title: 'Bùi Văn Hậu - 084512**99', content: 'Đã mua 3 tặng 1', time: '30 phút trước' },
+
+        { image: './images/sale.jpeg', title: 'Phan Thị Hòa - 093678**66', content: 'Đã mua 1 hộp', time: '32 phút trước' },
+        { image: './images/sale1.jpg', title: 'Nguyễn Thị Lan - 096854**23', content: 'Đã mua 2 hộp', time: '35 phút trước' },
+        { image: './images/sale2.jpg', title: 'Trương Văn Hải - 090321**55', content: 'Đã mua 3 tặng 1', time: '37 phút trước' },
+        { image: './images/sale3.jpeg', title: 'Lê Thị Hoa - 091998**11', content: 'Đã mua 1 hộp', time: '40 phút trước' },
+        { image: './images/sale4.jpg', title: 'Võ Minh Thành - 092345**77', content: 'Đã mua 2 hộp', time: '42 phút trước' },
+        { image: './images/sale5.jpg', title: 'Trần Hữu Nam - 089123**00', content: 'Đã mua 1 hộp', time: '45 phút trước' },
+        { image: './images/sale6.jpg', title: 'Nguyễn Thị Phương - 097111**22', content: 'Mua combo 2', time: '47 phút trước' },
+
+        { image: './images/sale.jpeg', title: 'Phạm Văn Long - 090999**33', content: 'Đã mua 2 hộp', time: '50 phút trước' },
+        { image: './images/sale1.jpg', title: 'Đặng Thị Mai - 093444**55', content: 'Đã mua 3 tặng 1', time: '1 giờ trước' },
+        { image: './images/sale2.jpg', title: 'Lý Thị Ánh - 088777**66', content: 'Đã mua 1 hộp', time: '1 giờ trước' },
+        { image: './images/sale3.jpeg', title: 'Hà Văn Tùng - 094555**88', content: 'Đã mua 2 hộp', time: '1 giờ 5 phút trước' },
+        { image: './images/sale4.jpg', title: 'Nguyễn Thị Yến - 091222**99', content: 'Đã mua 1 hộp', time: '1 giờ 10 phút trước' },
+        { image: './images/sale5.jpg', title: 'Bảo Trâm - 095333**44', content: 'Đã mua 3 tặng 1', time: '1 giờ 15 phút trước' },
+        { image: './images/sale6.jpg', title: 'Phạm Minh Phúc - 098000**11', content: 'Đặt trước 1', time: '1 giờ 20 phút trước' },
+
+        { image: './images/sale.jpeg', title: 'Lâm Thị Ngọc - 092222**66', content: 'Đã mua 2 hộp', time: '1 giờ 30 phút trước' },
+        { image: './images/sale1.jpg', title: 'Hoàng Văn Khoa - 093111**77', content: 'Mua combo 2', time: '1 giờ 35 phút trước' },
+        { image: './images/sale2.jpg', title: 'Trần Thị Bích - 090777**88', content: 'Thanh toán thành công', time: '1 giờ 40 phút trước' },
+        { image: './images/sale3.jpeg', title: 'Nguyễn Hữu Tuấn - 097999**00', content: 'Đã mua 1 hộp', time: '1 giờ 45 phút trước' },
+        { image: './images/sale4.jpg', title: 'Đào Thị Liên - 096123**21', content: 'Đã mua 2 hộp', time: '1 giờ 50 phút trước' },
+        { image: './images/sale5.jpg', title: 'Phan Văn Sơn - 089555**66', content: 'Đã mua 3 tặng 1', time: '1 giờ 55 phút trước' },
+        { image: './images/sale6.jpg', title: 'Lê Thị Mỹ - 094888**99', content: 'Đã mua 1 hộp', time: '2 giờ trước' },
+
+        { image: './images/sale.jpeg', title: 'Nguyễn Đức Hải - 091111**11', content: 'Đã mua 2 hộp', time: '2 giờ 5 phút trước' },
+        { image: './images/sale1.jpg', title: 'Võ Thị Lan - 092333**22', content: 'Đã mua 1 hộp', time: '2 giờ 10 phút trước' },
+        { image: './images/sale2.jpg', title: 'Trịnh Minh Châu - 093666**44', content: 'Mua combo 2', time: '2 giờ 20 phút trước' },
+        { image: './images/sale3.jpeg', title: 'Bùi Thị Oanh - 098123**88', content: 'Thanh toán thành công', time: '2 giờ 30 phút trước' },
+        { image: './images/sale4.jpg', title: 'Lương Văn Phúc - 090222**33', content: 'Đã mua 3 tặng 1', time: '2 giờ 40 phút trước' },
+        { image: './images/sale5.jpg', title: 'Hồ Thị Kim - 096777**55', content: 'Đã mua 1 hộp', time: '2 giờ 50 phút trước' },
+        { image: './images/sale6.jpg', title: 'Phạm Hoàng Anh - 094111**66', content: 'Đã mua 2 hộp', time: '3 giờ trước' },
+
+        { image: './images/sale.jpeg', title: 'Nguyễn Thị Hằng - 095222**77', content: 'Đã mua 1 hộp', time: '3 giờ 10 phút trước' },
+        { image: './images/sale1.jpg', title: 'Trần Quốc Bảo - 091777**44', content: 'Đã mua 2 hộp', time: '3 giờ 20 phút trước' },
+        { image: './images/sale2.jpg', title: 'Đỗ Văn Phong - 093888**55', content: 'Đã mua 3 tặng 1', time: '3 giờ 30 phút trước' },
+        { image: './images/sale3.jpeg', title: 'Nguyễn Thùy Dung - 090666**33', content: 'Mua combo 2', time: '3 giờ 40 phút trước' },
+        { image: './images/sale4.jpg', title: 'Hoàng Thị Mai - 097444**22', content: 'Đã mua 1 hộp', time: '3 giờ 50 phút trước' },
+        { image: './images/sale5.jpg', title: 'Phùng Văn Hòa - 089999**00', content: 'Đã mua 2 hộp', time: '4 giờ trước' },
+        { image: './images/sale6.jpg', title: 'Lê Thị Vân - 092555**11', content: 'Đã mua 3 tặng 1', time: '4 giờ 10 phút trước' },
+
+        { image: './images/sale.jpeg', title: 'Nguyễn Văn Sơn - 096444**88', content: 'Đặt trước 1', time: '4 giờ 20 phút trước' },
+        { image: './images/sale1.jpg', title: 'Trần Thị Tuyết - 093222**66', content: 'Đã mua 1 hộp', time: '4 giờ 30 phút trước' },
+        { image: './images/sale2.jpg', title: 'Bùi Thị Thu - 091555**33', content: 'Thanh toán thành công', time: '5 giờ trước' },
+        { image: './images/sale3.jpeg', title: 'Nguyễn Minh Đức - 098666**77', content: 'Đã mua 2 hộp', time: '5 giờ 30 phút trước' }
+    ];
+
+    function renderNotify(item) {
+        var img = notifyRoot.querySelector('.ladi-notify-image img');
+        var title = notifyRoot.querySelector('.ladi-notify-title');
+        var content = notifyRoot.querySelector('.ladi-notify-content');
+        var time = notifyRoot.querySelector('.ladi-notify-time');
+        if (img) img.src = item.image;
+        if (title) title.textContent = item.title;
+        if (content) content.textContent = item.content;
+        if (time) time.textContent = item.time;
+    }
+
+    function swapTo(item) {
+        if (!notifyBox) return;
+        // Ẩn trước khi đổi nội dung để có hiệu ứng
+        notifyBox.style.opacity = '0';
+        notifyBox.style.top = '-162px';
+        setTimeout(function () {
+            renderNotify(item);
+            // Hiện lại
+            requestAnimationFrame(function () {
+                notifyBox.style.opacity = '1';
+                notifyBox.style.top = '0px';
+            });
+        }, 200);
+    }
+
+    var idx = 0;
+    if (notifications.length) {
+        function hideBox() {
+            if (!notifyBox) return;
+            notifyBox.style.opacity = '0';
+            notifyBox.style.top = '-162px';
+        }
+
+        function cycle() {
+            // Hiển thị mục hiện tại
+            swapTo(notifications[idx]);
+            // Sau 5s thì ẩn đi
+            setTimeout(function () {
+                hideBox();
+                // 15s sau hiển thị mục kế tiếp
+                setTimeout(function () {
+                    idx = (idx + 1) % notifications.length;
+                    cycle();
+                }, 10000);
+            }, 5000);
+        }
+
+        cycle();
+    }
+});
