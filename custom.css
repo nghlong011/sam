@@ -1,0 +1,12 @@
+#SECTION11 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.ladi-wraper{
+    position: relative;
+    padding-top: 80px;
+}

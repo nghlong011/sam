@@ -123,6 +123,7 @@
 #HEADLINE123>.ladi-headline:hover,
 #HEADLINE124>.ladi-headline:hover,
 #HEADLINE125>.ladi-headline:hover,
+#HEADLINE125-copy>.ladi-headline:hover,
 #BOX82>.ladi-box:hover,
 #HEADLINE126>.ladi-headline:hover,
 #SHAPE103:hover>.ladi-shape,
@@ -1372,12 +1373,12 @@
 }
 
 #SECTION15 {
-    height: 2400.2px;
+    height: 2500.2px;
 }
 
 #BOX26 {
     width: 419px;
-    height: 1719px;
+    height: 1819px;
     top: 7.4px;
     left: 0px;
 }
@@ -1694,7 +1695,7 @@
     height: 127.257px;
     top: -1.56628px;
     left: -22.3474px;
-    background-image: url("./images/sam-to-nu-20231204063337-q3tfz.jpg");
+    background-image: url("./images/samtonu.jpg");
 }
 
 #GROUP143 {
@@ -1709,8 +1710,9 @@
     width: 230px;
     height: 222px;
 }
-
-#HEADLINE99,
+#HEADLINE99{
+    width: 250px;
+}
 #HEADLINE103 {
     width: 230px;
 }
@@ -1789,7 +1791,7 @@
     height: 144.128px;
     top: -2.75603px;
     left: -70.7015px;
-    background-image: url("https://w.ladicdn.com/s450x400/5ea845b95da1a2557f302daa/sam-to-nu-20231204063337-q3tfz.jpg");
+    background-image: url("./images/sam-duong-quy.jpg");
 }
 
 #GROUP147 {
@@ -1849,7 +1851,7 @@
     height: 136.426px;
     top: -13.3675px;
     left: -15.7332px;
-    background-image: url("https://w.ladicdn.com/s450x450/65ba676c83c7870012c44372/hoa-nhai-ta-20250910103344-ibs9a.jpg");
+    background-image: url("./images/ichmau.jpg");
 }
 
 #GROUP151 {
@@ -1882,7 +1884,7 @@
     height: 136.294px;
     top: 3.1852px;
     left: -24.9744px;
-    background-image: url("https://w.ladicdn.com/s500x450/65ba676c83c7870012c44372/anh-chup-man-hinh-2025-09-10-173438-20250910103506-8dvbc.png");
+    background-image: url("./images/hoa-tam-that.png");
 }
 
 #GROUP155 {
@@ -1894,7 +1896,7 @@
 #GROUP155-copy {
     width: 403.75px;
     height: 212.5px;
-    top: 1400.755px;
+    top: 1430.755px;
     left: 4.4375px;
 }
 #GROUP156 {
@@ -1972,14 +1974,20 @@
     top: 5.86584px;
     left: 5.83465px;
 }
+#IMAGE89>.ladi-image>.ladi-image-background{
+    width: 210.072px;
+    height: 130.968px;
+    top: -2.49399px;
+    left: -47.1136px;
+    background-image: url("./images/tao-do-1.jpg");
+}
 
-#IMAGE89>.ladi-image>.ladi-image-background,
 #IMAGE89-copy>.ladi-image>.ladi-image-background {
     width: 210.072px;
     height: 130.968px;
     top: -2.49399px;
     left: -47.1136px;
-    background-image: url("https://w.ladicdn.com/s550x450/65ba676c83c7870012c44372/anh-chup-man-hinh-2025-09-10-173640-20250910103658-jui25.png");
+    background-image: url("./images/gung.jpg");
 }
 
 #GROUP159 {
@@ -2009,13 +2017,13 @@
     height: 159.758px;
     top: -11.5663px;
     left: -14.6313px;
-    background-image: url("https://w.ladicdn.com/s500x500/65ba676c83c7870012c44372/anh-chup-man-hinh-2025-09-10-173752-20250910103808-zfwq6.png");
+    background-image: url("./images/cam-thao-0-.jpg");
 }
 
 #GALLERY3 {
     width: 420px;
     height: 559px;
-    top: 1810px;
+    top: 1910px;
     left: 0px;
 }
 
@@ -2059,7 +2067,7 @@
 #GROUP194 {
     width: 420px;
     height: 58px;
-    top: 1747.2px;
+    top: 1847.2px;
     left: 0px;
 }
 
@@ -2079,19 +2087,19 @@
 }
 
 #SECTION24 {
-    height: 878.5px;
+    height: 978.5px;
 }
 
 #GROUP188 {
     width: 451.154px;
-    height: 869.99px;
+    height: 969.99px;
     top: 5px;
     left: -8px;
 }
 
 #BOX80 {
     width: 409.641px;
-    height: 869.99px;
+    height: 969.99px;
     top: 0px;
     left: 15.6054px;
 }
@@ -2114,14 +2122,14 @@
 
 #GROUP189 {
     width: 443.899px;
-    height: 260.902px;
+    height: 360.902px;
     top: 6.81857px;
     left: 7.25454px;
 }
 
 #BOX81 {
     width: 357.216px;
-    height: 260.902px;
+    height: 330.902px;
     top: 0px;
     left: 34.0148px;
 }
@@ -2144,7 +2152,7 @@
 
 #HEADLINE122 {
     width: 309px;
-    top: 216.037px;
+    top: 286.037px;
     left: 58.0324px;
 }
 
@@ -2158,12 +2166,13 @@
 
 #HEADLINE123,
 #HEADLINE125,
+#HEADLINE125-copy,
 #HEADLINE127 {
     width: 425px;
 }
 
 #HEADLINE123 {
-    top: 128.256px;
+    top: 188.256px;
     left: 0px;
 }
 
@@ -2181,7 +2190,7 @@
 }
 
 #HEADLINE124 {
-    top: 161.418px;
+    top: 231.418px;
     left: 42.427px;
 }
 
@@ -2205,8 +2214,13 @@
     top: 8.29034px;
     left: 18.6533px;
 }
-
-#HEADLINE125>.ladi-headline {
+#HEADLINE125-copy {
+    top: 138.29034px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#HEADLINE125>.ladi-headline,
+#HEADLINE125-copy>.ladi-headline {
     font-size: 32px;
     font-weight: bold;
     line-height: 1.6;
@@ -2231,12 +2245,12 @@
 }
 
 #HEADLINE126 {
-    top: 16.5807px;
+    top: 5.5807px;
     left: 20.8477px;
 }
 
 #HEADLINE126>.ladi-headline {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     line-height: 1.6;
     color: rgb(255, 255, 255);
@@ -2270,7 +2284,7 @@
 #GROUP191 {
     width: 425.246px;
     height: 118.016px;
-    top: 266.726px;
+    top: 366.726px;
     left: 0px;
 }
 
@@ -2344,7 +2358,7 @@
 #BOX83 {
     width: 399.13px;
     height: 466.211px;
-    top: 397.928px;
+    top: 497.928px;
     left: 20.861px;
 }
 
@@ -2359,7 +2373,7 @@
 }
 
 #GROUP192 {
-    top: 411.583px;
+    top: 511.583px;
     left: 33.3121px;
 }
 
@@ -3153,7 +3167,7 @@
 #IMAGE127>.ladi-image>.ladi-image-background,
 #IMAGE144>.ladi-image>.ladi-image-background,
 #IMAGE145>.ladi-image>.ladi-image-background {
-    background-image: url("https://w.ladicdn.com/s400x400/65ba676c83c7870012c44372/anh-5-20250910101024-j7lyz.png");
+    background-image: url("./images/sp2.jpg");
 }
 
 #GROUP203 {
