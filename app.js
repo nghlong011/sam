@@ -149,7 +149,24 @@ document.addEventListener('DOMContentLoaded', function () {
     var notifyRoot = document.getElementById('NOTIFY3');
     if (!notifyRoot) return;
 
+    // Bỏ class ladi-hidden nếu có để cho phép hiển thị khi cần (ở chính #NOTIFY3 và các phần tử con)
+    try {
+        if (notifyRoot.classList && notifyRoot.classList.contains('ladi-hidden')) {
+            notifyRoot.classList.remove('ladi-hidden');
+        }
+        var hiddenChildren = notifyRoot.querySelectorAll('.ladi-hidden');
+        hiddenChildren.forEach(function (el) {
+            el.classList.remove('ladi-hidden');
+        });
+    } catch (e) { }
+
     var notifyBox = notifyRoot.querySelector('.ladi-notify');
+    // Nếu .ladi-notify bị ẩn bằng class, bỏ ra
+    try {
+        if (notifyBox && notifyBox.classList && notifyBox.classList.contains('ladi-hidden')) {
+            notifyBox.classList.remove('ladi-hidden');
+        }
+    } catch (e) { }
     if (notifyBox) {
         // Ẩn mặc định khi vào trang
         notifyBox.style.opacity = '0';
@@ -272,6 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 5000);
         }
 
-        cycle();
+        // Không hiển thị ngay khi vào trang: chờ 15s rồi mới hiển thị mục đầu tiên
+        setTimeout(cycle, 5000);
     }
 });
