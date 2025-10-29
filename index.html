@@ -2426,6 +2426,21 @@
             }
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var trigger = document.getElementById('BUTTON_TEXT3');
+            var target = document.getElementById('SECTION24');
+            if (!trigger || !target) return;
+            var HEADER_OFFSET = 80;
+            trigger.addEventListener('click', function () {
+                var rect = target.getBoundingClientRect();
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var targetTop = rect.top + scrollTop - HEADER_OFFSET;
+                window.scrollTo({ top: targetTop, behavior: 'smooth' });
+            });
+        });
+    </script>
+    <script src="app.js"></script>
 </body>
 
-</html><!--Publish time: Wed, 01 Oct 2025 02:52:18 GMT--><!--LadiPage build time: Mon, 29 Sep 2025 10:01:39 GMT-->
+</html>
