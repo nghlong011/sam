@@ -1,0 +1,12 @@
+body {
+    direction: ltr;
+}
+
+.ladi-wraper {
+    margin: 0 auto;
+    width: 420px;
+}
+
+body {
+    font-family: Montserrat, sans-serif
+}
