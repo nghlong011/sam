@@ -1639,8 +1639,7 @@
 }
 
 #GROUP142,
-#GROUP161,
-#GROUP110 {
+#GROUP161 {
     top: 50px;
     left: 0px;
 }
@@ -3933,6 +3932,8 @@
 #GROUP110 {
     width: 398px;
     height: 63px;
+    top: 50px;
+    left: 10px
 }
 
 #SHAPE91 {
@@ -3950,7 +3951,7 @@
     width: 379px;
     height: 31.1578px;
     top: 114px;
-    left: 20px;
+    left: 10px;
 }
 
 #SHAPE120 {
